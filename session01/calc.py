@@ -10,7 +10,6 @@ print(str(round(miles, 2)) + " miles\n")
 
 print("3. If you run a 10 kilometer race in 42 minutes 42 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?\n")
 
-
 print(str(int((seconds / miles)//60)) + " minutes and " + str(round((seconds/miles)%60, 2)) + " seconds per mile\n")
 
 print(str(round((miles) / ((seconds) / 3600), 2)) + " miles per hour\n")
