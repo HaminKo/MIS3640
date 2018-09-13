@@ -5,4 +5,4 @@ def quadratic(a, b, c):
     return x, y
 
 # Test using a = 1, b = 2, c=-3
-print(quadratic(1, 2, -3))
+print(quadratic(1, 2, 3))
