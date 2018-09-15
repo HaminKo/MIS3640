@@ -41,7 +41,7 @@ def set_to_mid(t, r, x, y, angle=0):
 def draw_flower(t, r, petals, x=0, y=0):
     """
     Draws a circle or radius r with specified number of petals that originate from the center.
-    (x, y) is the origin point for the drawing.
+    (x, y) is the origin point for the drawing. The bottom of the drawing will be at (x, y)
     """
     t.width(1)
     initialize_circle(t, r, x, y, 0)
@@ -61,7 +61,7 @@ def draw_flower(t, r, petals, x=0, y=0):
 def draw_yinyang(t, r, x=0, y=0):
     """
     Draws the yinyang symbol in a circle of radius r.
-    (x, y) is the origin point for the drawing.
+    (x, y) is the origin point for the drawing.  The bottom of the drawing will be at (x, y)
     """
     t.width(4)
     initialize_circle(t, r, x, y, 0)
@@ -83,14 +83,14 @@ def draw_yinyang(t, r, x=0, y=0):
 def draw_circle_triangle_circle(t, r, triangles, x=0, y=0):
     """
     Draws a circle with radius r that has a specified amount of trinagles that originate from the center. Each inner triangle has a circle within it.
-    (x, y) is the origin point for the drawing.
+    (x, y) is the origin point for the drawing. The bottom of the drawing will be at (x, y)
     """
     t.width(1)
     initialize_circle(t, r, x, y, 0)
     for i in range(triangles):
         angle = 360/triangles * i
         dist_to_triangle = r * math.cos(math.pi/6)
-        inner_circle_r = r * 1/ (4 * math.sin(2/3 * math.pi))
+        inner_circle_r = r * 1/ (4 * math.sin(1/3 * math.pi))
 
         set_to_mid(t, r, x, y, angle + 60)
         # Draw the triangle
