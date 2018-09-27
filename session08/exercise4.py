@@ -1,7 +1,8 @@
 def price(word):
     total = 0
     for letter in word.lower():
-        total = total + ord(letter) - 96
+        if ord(letter) >= 97 and ord(letter) <= 122:
+            total = total + ord(letter) - 96
     return total
 
 def print_receipt(items):
