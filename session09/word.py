@@ -1,4 +1,4 @@
-# fin = open("words.txt")
+fin = open("words.txt")
 # line = (fin.readline())
 # line = (fin.readline())
 # print(line)
@@ -11,7 +11,6 @@ def read_long_words():
     """
     prints only the words with more than 20 characters
     """
-    fin = open("words.txt")
     for line in fin:
         word = line.strip()
         if len(word) > 20:
@@ -25,10 +24,11 @@ def has_no_e(word):
     """
     returns True if the given word doesn’t have the letter “e” in it.
     """
-    for letter in word:
-        if letter == 'e':
-            return False
-    return True
+    # for letter in word:
+    #     if letter.lower() == 'e':
+    #         return False
+    # return True
+    return not 'e' in word.lower()
 
 
 
@@ -74,8 +74,8 @@ def uses_all(word, required):
     return uses_only(required, word)
 
 
-# print(uses_all('Babson', 'abs'))
-# print(uses_all('college', 'abs'))
+print(uses_all('Babson', 'abs'))
+print(uses_all('college', 'abs'))
 
 
 def is_abecedarian(word):
