@@ -1,25 +1,36 @@
+# def consecutive_letter(word, times):
+#     consecutive_row = 0
+#     not_same = 0
+#     same = 0
+#     previous = word[0]
+#     for letter in word[1:len(word)]:
+#         if letter == previous:
+#             if same == 0:
+#                 consecutive_row += 1
+#             same += 1
+#             not_same = 0
+#         else:
+#             if not_same != 0:
+#                 consecutive_row = 0
+#             not_same += 1
+#             same = 0
+#         previous = letter
+#         if consecutive_row == times:
+#             return True
+#     return False
+
 def consecutive_letter(word, times):
-    consecutive_row = 0
-    not_same = 0
-    same = 0
-    previous = word[0]
-    for letter in word[1:len(word)]:
-        if letter == previous:
-            if same == 0:
-                consecutive_row += 1
-            same += 1
-            not_same = 0
-        else:
-            if not_same != 0:
-                consecutive_row = 0
-            not_same += 1
-            same = 0
-        previous = letter
-        if consecutive_row == times:
-            return True
+    for i in range(1, len(word) - times * 2 + 1):
+        same = 0
+        for i in range(1, len(word), 2):
+            if word[i] == word[i + 1]:
+                print('called')
+                same += 1
+            if same == times:
+                return True
     return False
 
-print(consecutive_letter('abccdd', 3))
+print(consecutive_letter1('abbccdd', 3))
 
 def age_switch():
     mom = 0
@@ -40,4 +51,4 @@ def age_switch():
         if len(printstring) > 0:
             print(printstring)
 
-age_switch()
+# age_switch()

@@ -1,24 +1,17 @@
-fin = open("words.txt")
+# fin = open("words.txt")
 # line = (fin.readline())
 # line = (fin.readline())
 # print(line)
-
-# for line in fin:
-#     word = line.strip()
-#     print(word)
 
 def read_long_words():
     """
     prints only the words with more than 20 characters
     """
-    for line in fin:
-        word = line.strip()
-        if len(word) > 20:
-            print(word)
+    if len(word) > 20:
+        print(word)
 
 
-read_long_words()
-
+# read_long_words()
 
 def has_no_e(word):
     """
@@ -32,8 +25,8 @@ def has_no_e(word):
 
 
 
-print(has_no_e('Babson'))
-print(has_no_e('College'))
+# print(has_no_e('Babson'))
+# print(has_no_e('College'))
 
 
 def avoids(word, forbidden):
@@ -74,8 +67,8 @@ def uses_all(word, required):
     return uses_only(required, word)
 
 
-print(uses_all('Babson', 'abs'))
-print(uses_all('college', 'abs'))
+# print(uses_all('Babson', 'abs'))
+# print(uses_all('college', 'abs'))
 
 
 def is_abecedarian(word):
@@ -93,3 +86,17 @@ def is_abecedarian(word):
 
 # print(is_abecedarian('abs'))
 # print(is_abecedarian('college'))
+
+def use_function(data, thefunc, condition):
+    counter = 0
+    compare = 0
+    for line in data:
+        counter += 1
+        word = line.strip()
+        if thefunc(word, condition) == True:
+            compare += 1
+    print(compare)
+    print(compare/counter)
+
+fin = open("words.txt")
+print(use_function(fin, uses_all, 'abc'))
