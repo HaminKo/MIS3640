@@ -16,7 +16,19 @@ def in_bisect(word_list, word):
     word_list: list of strings
     word: string
     """
-    pass
+    start = 0
+    end = len(word_list)
+    while start < end:
+        x = (start + end) // 2
+        current_word = word_list[x]
+        if word == current_word:
+            return True
+        elif word > current_word:
+            if start == x:
+                return False
+            start = x
+        elif word < current_word:
+            end = x
 
 
 if __name__ == '__main__':

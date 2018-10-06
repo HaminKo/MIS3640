@@ -30,7 +30,7 @@ def consecutive_letter(word, times):
                 return True
     return False
 
-print(consecutive_letter1('abbccdd', 3))
+print(consecutive_letter('abbccdd', 3))
 
 def age_switch():
     mom = 0
