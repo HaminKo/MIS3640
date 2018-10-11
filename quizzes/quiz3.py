@@ -5,18 +5,25 @@ def get_middle(a, b):
     '''
     Given 2 lists, a and b, return a new list containing their middle elements.
     '''
-    a_mid_i = len(a)//2
-    b_mid_i = len(b)//2
-    if len(a)%2 == 0:
-        a_mid = a[a_mid_i-1:a_mid_i+1]
-    else:
-        a_mid = a[a_mid_i:a_mid_i+1]
-    if len(b)%2 == 0:
-        b_mid = b[b_mid_i-1:b_mid_i+1]
-    else:
-        b_mid = b[b_mid_i:b_mid_i+1]
+    # a_mid_i = len(a)//2
+    # b_mid_i = len(b)//2
+    # if len(a)%2 == 0:
+    #     a_mid = a[a_mid_i-1:a_mid_i+1]
+    # else:
+    #     a_mid = a[a_mid_i:a_mid_i+1]
+    # if len(b)%2 == 0:
+    #     b_mid = b[b_mid_i-1:b_mid_i+1]
+    # else:
+    #     b_mid = b[b_mid_i:b_mid_i+1]
+    
+    def mid_list(array):
+        array_mid_i = len(array)//2
+        if len(array)%2 == 0:
+            return array[array_mid_i-1:array_mid_i+1]
+        else:
+            return array[array_mid_i:array_mid_i+1]
 
-    return a_mid + b_mid
+    return mid_list(a) + mid_list(b)
 
 # Uncomment the following lines to test
 a = [1, 2, 3]
