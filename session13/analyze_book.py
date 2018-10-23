@@ -96,12 +96,27 @@ def random_word(hist):
         word_count += hist[word]
     random_word = random.randint(1, word_count)
 
-    prev_word = list(freq_hist.keys())[0]
-    for word in freq_hist:
-        if freq_hist[word] >= random_word and freq_hist[prev_word] < random_word:
-            return word
-        prev_word = word
+    # prev_word = list(freq_hist.keys())[0]
+    # for word in freq_hist:
+    #     if freq_hist[word] >= random_word and freq_hist[prev_word] < random_word:
+    #         return word
+    #     prev_word = word
 
+    word_list = list(freq_hist.items())
+    start = 0
+    end = len(word_list)
+    if random_word == 1:
+        return word_list[0][0]
+    while start < end:
+        x = (start + end)//2
+        current_number = word_list[x][1]
+        previous_number = word_list[x-1][1]
+        if random_word <= current_number and random_word > previous_number:
+            return word_list[x][0]
+        elif random_word > current_number:
+            start = x
+        elif random_word < current_number:
+            end = x
 
 
 def main():
