@@ -5,7 +5,7 @@
 
 class Time:
     """Represents the time of day.
-       
+
     attributes: hour, minute, second
     """
 
@@ -22,7 +22,7 @@ class Time:
 
     def __str__(self):
         """Returns a string representation of the time."""
-        return '%.2d:%.2d:%.2d' % (self.hour, self.minute, self.second)
+        return '{:02d}:{:02d}:{:02d}'.format(time.hour, time.minute, time.second)
 
     def print_time(self):
         """Prints a string representation of the time."""

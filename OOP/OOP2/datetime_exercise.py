@@ -1,10 +1,16 @@
-from datetime import datetime
-from Time import *
+import datetime as dt
 
 
 def days_until_birthday(birthday):
     """How long until my next birthday?"""
+    today_date = dt.datetime.today()
 
+    if birthday.month > today_date.month or (birthday.month == today_date.month and birthday.day > today_date.day):
+        next_birthday = dt.datetime(today_date.year, birthday.month, birthday.day)
+    else:
+        next_birthday = dt.datetime(today_date.year + 1, birthday.month, birthday.day)
+
+    return (next_birthday - today_date).days
 
 def double_day(b1, b2):
     """Compute the day when one person is twice as old as the other.
@@ -13,73 +19,39 @@ def double_day(b1, b2):
     b2: datetime birthday of the older person
     """
 
+    def get_age(birthday, current_date):
+        return current_date.year - birthday.year - ((current_date.month, current_date.day) < (birthday.month, birthday.day))
+
+    day_compare = b1
+
+    while get_age(b1, day_compare) * 2 != get_age(b2, day_compare):
+        day_compare += dt.timedelta(days=1)
+    
+    return day_compare
+
 
 def datetime_exercises():
     """Exercise solutions."""
 
     # print today's day of the week
-    today = datetime.today()
-    print(today.weekday())
-    print(today.strftime('%A'))
+    print(dt.datetime.today().weekday())
 
     # compute the number of days until the next birthday
     # (note that it usually gets rounded down)
-    birthday = datetime(1997, 4, 1)
+    birthday = dt.datetime(1997, 10, 25)
     print('Days until birthday', end=' ')
     print(days_until_birthday(birthday))
 
     # compute the day one person is twice as old as another
-    b1 = datetime(2018, 12, 25)
-    b2 = datetime(2018, 11, 1)
+    b1 = dt.datetime(2017, 12, 25)
+    b2 = dt.datetime(2010, 11, 1)
     print('Double Day', end=' ')
     print(double_day(b1, b2))
 
 
-def main():
-    # if a movie starts at noon...
-    noon_time = Time()
-    noon_time.hour = 12
-    noon_time.minute = 0
-    noon_time.second = 0
-
-    print('Starts at', end=' ')
-    print_time(noon_time)
-
-    # and the run time of the movie is 109 minutes...
-    movie_minutes = 109
-    run_time = int_to_time(movie_minutes * 60)
-    print('Run time', end=' ')
-    print_time(run_time)
-
-    # what time does the movie end?
-    end_time = add_time(noon_time, run_time)
-    print('Ends at', end=' ')
-    print_time(end_time)
-
-    print('Does it end after it begins?', end=' ')
-    print(is_after(end_time, noon_time))
-
-    print('Home by', end=' ')
-    travel_time = 600      # 10 minutes
-    home_time = increment(end_time, travel_time)
-    print_time(home_time)
-
-    race_time = Time()
-    race_time.hour = 1
-    race_time.minute = 34
-    race_time.second = 5
-
-    print('Half marathon time', end=' ')
-    print_time(race_time)
-
-    distance = 13.1       # miles
-    pace = mul_time(race_time, 1 / distance)
-
-    print('Time per mile', end=' ')
-    print_time(pace)
-
-    datetime_exercises()
+# def main():
+#     datetime_exercises()
 
 
 if __name__ == '__main__':
-    main()
+    datetime_exercises()

@@ -60,14 +60,14 @@ def find_corners(rect):
     tr = Point()
 
     bl.x = rect.corner.x
-    b1.y = rect.corner.y
+    bl.y = rect.corner.y
     br.x = rect.corner.x + rect.width
     br.y = rect.corner.y
     tl.x = rect.corner.x
     tl.y = rect.corner.y + rect.height
     tr.x = rect.corner.x + rect.width
     tr.y = rect.corner.y + rect.height
-    return [b1, br, tl, tr]
+    return [bl, br, tl, tr]
 
 def grow_rectangle(rect, dwidth, dheight):
     """Modifies the Rectangle by adding to its width and height.
@@ -152,7 +152,7 @@ def rect_circle_overlap_2(circle,rect):
     elif corners[0].y <= circle.center.y and corners[2].y >= circle.center.y:
         if circle.center.x + circle.radius >= corners[0].x and circle.center.x - circle.radius.x <= corners[0].x:
             return True
-        if circle.center.x + circle.radius >= corners[1].x and circle.center.x - circle.radius.x <= corners[1]].x:
+        if circle.center.x + circle.radius >= corners[1].x and circle.center.x - circle.radius.x <= corners[1].x:
             return True
     return False
 
