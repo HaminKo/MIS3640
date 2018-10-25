@@ -133,7 +133,7 @@ def rect_circle_overlap(circle, rect):
             return True,
     return False
 
-def rect_circle_overlap_2(cricle,rect):
+def rect_circle_overlap_2(circle,rect):
     """
     Returns true if any part of the rectangle lies in the circle.
     circle: Circle object
@@ -141,7 +141,20 @@ def rect_circle_overlap_2(cricle,rect):
 
     returns: boolean
     """
-
+    if rect_circle_overlap(circle, rect):
+        return True
+    corners = find_corners(rect)
+    if corners[0].x <= circle.center.x and corners[1].x >= circle.center.x:
+        if circle.center.y + circle.radius >= corners[0].y and circle.center.y - circle.radius.y <= corners[0].y:
+            return True
+        if circle.center.y + circle.radius >= corners[2].y and circle.center.y - circle.radius.y <= corners[2].y:
+            return True
+    elif corners[0].y <= circle.center.y and corners[2].y >= circle.center.y:
+        if circle.center.x + circle.radius >= corners[0].x and circle.center.x - circle.radius.x <= corners[0].x:
+            return True
+        if circle.center.x + circle.radius >= corners[1].x and circle.center.x - circle.radius.x <= corners[1]].x:
+            return True
+    return False
 
 
 def main():
