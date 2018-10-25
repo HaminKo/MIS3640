@@ -56,22 +56,46 @@ def different_words(hist):
     return len(hist.keys())
 
 
-def most_common(hist):
+def most_common(hist, exclude_stopwords=True):
     """Makes a list of word-freq pairs in descending order of frequency.
     hist: map from word to frequency
     returns: list of (frequency, word) pairs
     """
-    def take_second(item):
-        return item[1]
-    return sorted(hist.items(), key=take_second, reverse=True)
+    file = open("stopwords.txt")
+    stopwords = []
+    strippables = string.punctuation + string.whitespace
+    for line in file:
+        stopwords.append(line.strip(strippables))
+    
+    # def take_second(item):
+        # return item[1]
+    # return sorted(hist.items(), key=take_second, reverse=True)
+    # sorted_list = sorted(hist.items(), key=lambda item:item[1], reverse=True)
+    # if exclude_stopwords:
+    #     for word in stopwords:
+    #     #     sorted_list.remove(word)
+    #         return_list = [pair for pair in sorted_list if word not in sorted_list]
+    # return return_list
 
+    t = []
+
+    for word,freq in hist.items():
+        if exclude_stopwords:
+            if word in stopwords:
+                continue
+        t.append((freq, word))
+    
+    t.sort(reverse=True)
+    return t
 
 def print_most_common(hist, num=10):
     """Prints the most commons words in a histgram and their frequencies.
     hist: histogram (map from word to frequency)
     num: number of words to print
     """
-    return most_common(hist)[:num]
+    # return most_common(hist)[:num]
+    for word,freq in most_common(hist)[:num]:
+        print(word, '\t', freq)
 
 
 def subtract(d1, d2):
@@ -125,10 +149,10 @@ def main():
     # print('Total number of words:', total_words(hist))
     # print('Number of different words:', different_words(hist))
 
-    # t = most_common(hist)
-    # print('The most common words are:')
-    # for freq, word in t[0:20]:
-    #     print(word, '\t', freq)
+    t = most_common(hist)
+    print('The most common words are:')
+    for freq, word in t[0:20]:
+        print(word, '\t', freq)
 
     # words = process_file('words.txt', skip_header=False)
 
@@ -137,9 +161,9 @@ def main():
     # for word in diff.keys():
     #     print(word, end=' ')
 
-    print("\n\nHere are some random words from the book")
-    for i in range(100):
-        print(random_word(hist), end=' ')
+    # print("\n\nHere are some random words from the book")
+    # for i in range(100):
+    #     print(random_word(hist), end=' ')
 
 
 if __name__ == '__main__':
